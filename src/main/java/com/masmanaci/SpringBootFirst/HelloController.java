@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @GetMapping("/hello")
-    public String hello(){
-        return "Hello World!";
+    public HelloResponse hello(){
+        return new HelloResponse("HelloWorld!");
     }
 
     @PostMapping("/hello")
-    public String hello(@RequestBody String name){
-        return "Hello " + name + " !";
+    public HelloResponse hello(@RequestBody String name){
+        return new HelloResponse("Hello " + name + " !");
+        //Jackson dependency serializes the JAVA Objects to JSON.
     }
 }
