@@ -1,9 +1,6 @@
 package com.masmanaci.SpringBootFirst;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
@@ -11,6 +8,12 @@ public class HelloController {
     @GetMapping("/hello")
     public HelloResponse hello(){
         return new HelloResponse("HelloWorld!");
+    }
+
+    //Note : dynamic variable and PathVarieble must match!
+    @GetMapping("/hello/{name}")
+    public HelloResponse helloParam(@PathVariable String name){
+        return new HelloResponse("Hello " + name);
     }
 
     @PostMapping("/hello")
